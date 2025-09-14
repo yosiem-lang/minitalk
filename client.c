@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid <= 0 || pid > PID_MAX)
+	if (pid <= 0)
 		return (-1);
 	transmitter(pid, argv[2]);
 	return (0);

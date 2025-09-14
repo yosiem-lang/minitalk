@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid <= 0 || pid > PID_MAX)
+	if (pid <= 0)
 		return (-1);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = sig_handler;
