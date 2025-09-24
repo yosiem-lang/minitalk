@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkazuhik <mkazuhik@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/06 18:19:27 by mkazuhik          #+#    #+#             */
+/*   Updated: 2025/09/24 15:58:12 by mkazuhik         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 int	transmitter(pid_t pid, const char *message)
@@ -14,7 +26,7 @@ int	transmitter(pid_t pid, const char *message)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(500);
+			usleep(100);
 			i++;
 		}
 		message++;
@@ -46,7 +58,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	}
 	pid = ft_atoi(argv[1]);
-	if (pid <= 0)
+	if (pid <= 0 || pid > PID_MAX)
 		return (-1);
 	act.sa_flags = SA_SIGINFO;
 	act.sa_sigaction = sig_handler;
